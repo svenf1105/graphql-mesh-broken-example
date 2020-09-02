@@ -1,0 +1,11 @@
+query broken {
+  country(code: "DE") {
+    name
+  }
+}
+
+query works {
+  getPage{
+    items
+  }
+}

@@ -1,0 +1,22 @@
+sources:
+  - name: Broken
+    handler:
+      graphql:
+        endpoint: https://countries.trevorblades.com/
+    transforms:
+      - resolversComposition:
+          - resolver: Query.*
+            composer: ./src/add-fields
+
+  - name: Works
+    handler:
+      openapi:
+        source: https://en.wikipedia.org/api/rest_v1/?spec
+        baseUrl: https://en.wikipedia.org/api/rest_v1
+    transforms:
+      - resolversComposition:
+          - resolver: Query.*
+            composer: ./src/add-fields
+
+serve:
+  exampleQuery: get-projects-with-issues.graphql
